@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
 import os
-
 root=tk.Tk()
 root.withdraw()
 
@@ -15,7 +14,6 @@ if not input_file_path:
     exit()
 
 #Text file data exctraction using Boolean Switch method
-
 capture = False
 count = 0
 with open(input_file_path,"r") as f:
@@ -55,7 +53,8 @@ with open(input_file_path,"r") as f:
 
 #Recombining the data into a CSV
 output_folder = os.path.dirname(input_file_path)
-output_csv_path = os.path.join(output_folder, "charge.csv" )
+name, extension =os.path.splitext(input_file_path)
+output_csv_path = os.path.join(output_folder, name+"_charges.csv")
 n=0
 with open(output_csv_path,"w") as f:
     for i in charge:
