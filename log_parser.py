@@ -20,8 +20,10 @@ with open(input_file_path,"r") as f:
     num_atom=[] #This will store the atom numbers 
     atom=[] #This will store the elements or atom types
     charge=[] # This will store the atomic charges
-    n=44 #This is the number of atoms in the molecule
     for line in f:
+        if "Charges from ESP fit with" in line:
+            capture = False
+            count=0
         if "Charges from ESP fit," in line:
             capture = True
             num_atom.clear()
@@ -44,9 +46,6 @@ with open(input_file_path,"r") as f:
         elif capture and count <= 0:
             count+=1
             continue
-        if count==n:
-            capture = False
-            count=0
 #print(num_atom)
 #print(atom)
 #print(charge)
